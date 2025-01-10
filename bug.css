@@ -1,0 +1,21 @@
+The following CSS code snippet demonstrates an issue where the `::before` pseudo-element's content overlaps the main element's content unexpectedly.  This can happen if the `position` property isn't handled carefully, particularly when using absolute or relative positioning within containers with specific dimensions. 
+
+```css
+div {
+  width: 200px;
+  height: 100px;
+  background-color: lightblue;
+  position: relative; /* important for ::before to be positioned relatively to this div */
+}
+
+div::before {
+  content: "Before";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: lightcoral;
+  padding: 10px;
+}
+```
+
+The `::before` element, despite its intended position at the top-left, will visually overlap the `div`'s background, potentially obscuring parts of its content or leading to unexpected visual rendering.
