@@ -1,0 +1,23 @@
+The solution involves understanding how `position` works in conjunction with pseudo-elements and container dimensions.  By adjusting the positioning and potentially adding padding or margins, we can ensure the pseudo-element doesn't overlap the main content.  The most common fixes include using proper `z-index` values or using different positioning mechanisms. 
+
+Here's a corrected version:
+
+```css
+div {
+  width: 200px;
+  height: 100px;
+  background-color: lightblue;
+  position: relative; /* needed for absolute positioning of ::before */
+}
+
+div::before {
+  content: "Before";
+  position: absolute;
+  top: 10px; /* Add some top margin */
+  left: 10px; /* Add some left margin */
+  background-color: lightcoral;
+  padding: 10px;
+}
+```
+
+Adding margins to the `::before` element prevents the overlap by moving it slightly away from the edges of the container element.  Another solution would be to manipulate the z-index property to control stacking order. For example, to place the pseudo-element behind the div, you could add `z-index: -1;` to the `::before` selector.
